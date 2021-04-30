@@ -1,0 +1,185 @@
+
+<div [hidden]="!active" class="pane">
+
+<!-- HEADER SIEMPRE ESTA VISIBLEEEEE-->
+<mat-toolbar color="primary" class="header" style="    background: darkblue;">
+    <a routerLink="/bedelias" routerLinkActive="active">
+        <span color="primary"style="padding-top: 10px;cursor: pointer;display: flex;width: 25vh;justify-content: space-between;">
+            <img src="../assets/img/logo-utec.png" alt="" style="height: 8vh;width: 8vh;">
+            <div>
+                <h1 style="color: darkorange;    font-size: 3vh;">BEDELIAS</h1>
+                <p style="color: white;    font-size: 2vh;">UTEC 2020</p>
+            </div>
+        </span>
+    </a>
+
+    <span  style="
+    width: 30vh;">
+    <div *ngIf="getUs() == null">
+            <button mat-button   (click)="openDialogLogin()" style="font-size: 2vh;color: whitesmoke;    border: 1px solid;">Iniciar Sesión</button>
+    </div>
+    <div *ngIf="getUs() != null" style="display: flex;
+    align-items: center;
+    justify-content: space-around;">
+            <button mat-button   (click)="openDialogLogout()" style="font-size: 2vh;    color: whitesmoke;    border: 1px solid;">Cerrar Sesión</button>
+            <button mat-mini-fab  (click)="openCambiarPass()" style=" color: whitesmoke;background-color: midnightblue;"><mat-icon matListIcon>settings</mat-icon></button>
+        </div>
+    </span>
+</mat-toolbar>
+
+
+<!-- MENU CUANDO SE ESTA LOGEADO-->
+<mat-toolbar color="primary" class="hamb" style="border-top: 1px solid royalblue;">
+    <span color="primary"style="display: flex;width: 70vh;justify-content: space-between;align-items: center;">
+ 
+    <div *ngIf="getUs() != null">
+        <mat-button-toggle-group [value]="mode" (change)="onValChange($event.value)" name="fontStyle" aria-label="Font Style" style="font-size: 1rem;cursor: pointer;">
+            <div *ngIf="isEstudiante()">
+                <mat-button-toggle value="Estudiante"  matTooltip="Cambiar a Modo Estudiante"  style="    display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bolder;" (click)="opened = !opened">Estudiante</mat-button-toggle>
+            </div>
+
+            <div *ngIf="isAdmin()">
+                <mat-button-toggle  value="Admin" matTooltip="Cambiar a Modo Admin"  style="    display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bolder;" (click)="opened = !opened">Admin</mat-button-toggle>
+
+            </div>
+            <div *ngIf="isDocente()">
+                <mat-button-toggle value="Docente" matTooltip="Cambiar a Modo Docente"  style="    display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bolder;" (click)="opened = !opened">Docente</mat-button-toggle>
+            </div>
+            <div *ngIf="isSecre()">
+                <mat-button-toggle value="Secretario" matTooltip="Cambiar a Modo Secretario"  style="    display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bolder;" (click)="opened = !opened">Secretario</mat-button-toggle>
+            </div>
+        </mat-button-toggle-group>
+    </div>
+
+    </span>
+    <div *ngIf="getUs() != null">
+        <span class="mode" style="display: flex;align-items: center;justify-content: space-around;">
+            <span color="primary"style="display: flex;width: 10vh;justify-content: space-between;align-items: center;">
+                <div style="height: 8vh;width: 5vh;border-radius: 8vh;display: flex;align-items: center;" >
+                    <div >
+                        <h1 style="color: whitesmoke; font-size: 15px;">{{Persona.nombre}} {{Persona.apellido}}</h1>
+                    </div>
+                </div>
+            </span>
+        </span>
+      </div>
+</mat-toolbar>
+</div>
+<mat-sidenav-container >
+    <mat-sidenav #sideNav [(opened)]="opened" mode="over" >
+        <!--MENU PARA ADMINISTRADOR-->
+        <div class="man" *ngIf="mode == 'Admin'">
+            <div class="tit-menu" style="color: darkred;"><h1>MENÚ</h1></div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <div class="sub-menu" style="color: black;"><h1>Gestión de usuarios</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Administrativos" routerLinkActive="active" ><mat-icon matListIcon>group_work</mat-icon><span matLine>Administrativos</span></a>
+                <a mat-list-item routerLink="/Secretarios" routerLinkActive="active"><mat-icon matListIcon>people</mat-icon><span matLine>Secretarios</span></a>
+                <a mat-list-item routerLink="/Docentes" routerLinkActive="active"><mat-icon matListIcon>recent_actors</mat-icon><span matLine>Docentes</span></a>
+                <mat-divider></mat-divider>
+                <div class="sub-menu" style="color: black;"><h1>Gestión de carreras</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Carreras" routerLinkActive="active"><mat-icon matListIcon>group_work</mat-icon><span matLine>Carreras</span></a>
+                <a mat-list-item routerLink="/Sedes" routerLinkActive="active"><mat-icon matListIcon>insert_invitation</mat-icon><span matLine>Sedes</span></a>
+                <a mat-list-item routerLink="/AreasdeEstudio" routerLinkActive="active"><mat-icon matListIcon>people</mat-icon><span matLine>Áreas de estudio</span></a>
+                <mat-divider></mat-divider>
+                <div class="sub-menu" style="color: black;"><h1>Gestión de cursos</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Cursos" routerLinkActive="active"><mat-icon matListIcon>insert_chart_outlined</mat-icon><span matLine>Cursos</span></a>
+                <a mat-list-item routerLink="/TiposdeCursos" routerLinkActive="active"><mat-icon matListIcon>linear_scale</mat-icon><span matLine>Tipos de cursos</span></a>
+                <mat-divider></mat-divider>
+                <div class="sub-menu" style="color: black;"><h1>Gestión de periodos</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/PeriodosdeInscripcion" routerLinkActive="active"><mat-icon matListIcon>insert_chart_outlined</mat-icon><span matLine>Periodos de inscripción</span></a>
+                <a mat-list-item routerLink="/PeriodosLectivos" routerLinkActive="active"><mat-icon matListIcon>insert_invitation</mat-icon><span matLine>Periodos lectivos</span></a>
+                <a mat-list-item routerLink="/PeriodosdeExamenes" routerLinkActive="active"><mat-icon matListIcon>insert_invitation</mat-icon><span matLine>Periodos de exámenes</span></a>
+                <mat-divider></mat-divider>
+                <div class="sub-menu" style="color: black;"><h1>Gestión de actas</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/CierreDeCursos" routerLinkActive="active"><mat-icon matListIcon>linear_scale</mat-icon><span matLine>Cierre de actas a cursos</span></a>
+                <a mat-list-item routerLink="/CierreDeExamenes" routerLinkActive="active"><mat-icon matListIcon>linear_scale</mat-icon><span matLine>Cierre de actas a examenes</span></a>
+                <mat-divider></mat-divider>
+
+
+            </mat-nav-list>
+        </div>
+
+        <!--MENU PARA ESTUDIANTE-->
+        <div *ngIf="mode == 'Estudiante'">
+            <div class="tit-menu" style="color: dodgerblue;"><h1>MENÚ</h1></div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <div class="sub-menu" style="color: black;"><h1>Académico</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Previas"  routerLinkActive="active"><mat-icon matListIcon>bubble_chart</mat-icon><span matLine>Visualización de previas</span></a>
+                <a mat-list-item routerLink="/SolicitudEscolaridad" routerLinkActive="active"><mat-icon matListIcon>linear_scale</mat-icon><span matLine>Solicitar escolaridad</span></a>
+                <mat-divider></mat-divider>
+                <div class="sub-menu" style="color: black;"><h1>Inscripciones</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/InscripcionCursos" routerLinkActive="active"><mat-icon matListIcon>insert_chart_outlined</mat-icon><span matLine>Inscribirme a cursos</span></a>
+                <a mat-list-item routerLink="/InscripcionExamenes" routerLinkActive="active"><mat-icon matListIcon>insert_chart_outlined</mat-icon><span matLine>Inscribirme a examenes</span></a>
+                <mat-divider></mat-divider>
+            </mat-nav-list>
+        </div>
+
+    <!--MENU PARA DOCENTE-->
+        <div *ngIf="mode == 'Docente'">
+            <div class="tit-menu" style="color: darkorange;"><h1>MENÚ</h1></div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <div class="sub-menu" style="color: black;"><h1>Resultados</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/CalificarCursos" routerLinkActive="active"><mat-icon matListIcon>ballot</mat-icon><span matLine>Calificar cursos</span></a>
+                <a mat-list-item routerLink="/CalificarExamenes" routerLinkActive="active"><mat-icon matListIcon>grid_on</mat-icon><span matLine>Calificar examenes</span></a>
+                <mat-divider></mat-divider>
+                <div class="sub-menu" style="color: black;"><h1>Asistencias</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/ControlAsistencias" routerLinkActive="active"><mat-icon matListIcon>recent_actors</mat-icon><span matLine>Control de asistencias</span></a>
+                <mat-divider></mat-divider>
+
+            </mat-nav-list>
+        </div>
+
+    <!--MENU PARA SECRETARIO-->
+        <div *ngIf="mode == 'Secretario'">
+            <div class="tit-menu" style="color: green;"><h1>MENÚ</h1></div>
+            <mat-divider></mat-divider>
+
+            <mat-nav-list>
+                <div class="sub-menu" style="color: black;"><h1>Cierres de periodos</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/CierrePeriodoInscripcionCursos" routerLinkActive="active"><mat-icon matListIcon>straighten</mat-icon><span matLine>Cierre de inscripciones a cursos</span></a>
+                <a mat-list-item routerLink="/CierrePeriodoInscripcionExamenes" routerLinkActive="active"><mat-icon matListIcon>straighten</mat-icon><span matLine>Cierre de inscripciones a examenes</span></a>
+                <mat-divider></mat-divider>
+                <div class="sub-menu" style="color: black;"><h1>Certificados</h1></div>
+                <mat-divider></mat-divider>
+                <a mat-list-item (click)="addCertificado()"><mat-icon matListIcon>recent_actors</mat-icon><span matLine>Ingreso de certificados</span></a>
+                <mat-divider></mat-divider>
+
+            </mat-nav-list>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content style="overflow-y: hidden;">
+
+        <div  class="uploader-status" *ngIf="!loading">
+            <mat-spinner color="warn"></mat-spinner>
+        </div>
+
+        <div class="dinam"  *ngIf="loading">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

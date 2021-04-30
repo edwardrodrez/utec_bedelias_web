@@ -1,0 +1,16 @@
+<h3 style="color: darkred;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Dará de baja el Tipo de Curso</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+            <p>Se eliminara {{data.nombre}}.</p><br><p>¿Está seguro de continuar con esta acción?</p>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button color="warn"  (click)="deleteTipoDeCurso()"  >Confirmar</button></div>
+        </div>   
+      </form>

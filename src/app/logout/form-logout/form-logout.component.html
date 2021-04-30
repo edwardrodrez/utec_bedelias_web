@@ -1,0 +1,20 @@
+
+  <h3 style="color: steelblue;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2vh;">Cerrar Sesión</h3>
+  <mat-divider></mat-divider>
+
+      <form class="example-form">
+
+            <div style="padding-top: 20px;padding-bottom: 30px;">
+                <p>Esta seguro de que desea cerrar sesión?</p>
+            </div>
+
+          <mat-divider></mat-divider>
+          <div style="display: flex;justify-content: space-between;padding: 10px;">
+              <div><button mat-button mat-dialog-close>Close</button></div>
+              <div><button mat-raised-button (click)="Logout()" color="primary" >Confirmar</button></div>
+          </div>
+
+        </form>

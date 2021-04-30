@@ -1,0 +1,91 @@
+<div class="content" style="background: #00B4DB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+<mat-card class="example-card" style="margin: 20px;">
+    <mat-card-header>
+
+      <mat-card-title>Inscripciones a Cursos </mat-card-title>
+      <mat-card-subtitle>en periodos de Inscripciones</mat-card-subtitle>
+    </mat-card-header>
+
+  </mat-card>
+ <mat-divider style="background: white;margin: 20px;"></mat-divider>
+
+<div class="select" style="display: flex;justify-content: space-between;;color: white;padding-top: 0px;">
+  <div class="per">
+
+    <mat-card class="example-card" style="background: darkorange;height: 50vh;min-width: 250px;margin: 20px;">
+        <mat-card-header>
+          <mat-card-title style="color: white;">Cursos</mat-card-title>
+          <mat-card-subtitle>en periodos de Inscripciones</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-selection-list #shoes [multiple]="false" style="overflow-y: auto;min-width: 250px;height:40vh;">
+            <mat-list-option *ngFor="let shoe of typesOfShoes" (click)="Validacion(this.shoe.idperiodo,shoe.curso)" [value]="shoe" style="color: white;">
+              <div style="display: flex;align-items: center;
+              justify-content: space-between;">
+                <div style="width: 150px;">{{shoe.curso.nombre}}</div>
+                <div>{{shoe.sede.nombre}}</div>
+                <div>{{shoe.sede.direccion.ciudad}}</div>
+            </div>
+               
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-card-content>
+
+      </mat-card>
+
+
+
+</div>
+          <div class="insc">
+
+            <mat-card class="example-card" style="background: white;height: 25vh;width: 450px;">
+                <mat-card-header>
+                  <div *ngIf="info.creditos == 0">
+                    <mat-card-title style="color: black">Seleccione un Curso</mat-card-title>
+                    <mat-card-subtitle>Créditos del curso.</mat-card-subtitle>
+                  </div>
+                  <div *ngIf="info.creditos > 0">
+                    <mat-card-title style="color: black">{{info.nombre}}</mat-card-title>
+                    <mat-card-subtitle>Creditos: {{info.creditos}}</mat-card-subtitle>
+                  </div>
+
+                </mat-card-header>
+
+                <mat-card-content>
+                  <div *ngIf="info.creditos == 0">
+                    <div class="comentario" style="padding: 10px;border: 1px solid grey;margin-bottom: 10px;">
+                      <p style="font-size: 1rem;font-weight: 400;">Comentario</p>
+                      <p style="color: gray;">Aviso de si cumple con los requisitos.</p>
+                  </div>
+                  </div>
+                  <div *ngIf="info.creditos > 0">
+                    <div class="comentario" style="padding: 10px;border: 1px solid grey;margin-bottom: 10px;">
+                      <p style="font-size: 1rem;font-weight: 400;">Comentario</p>
+                      <p style="color: gray;">{{info.mensaje}}</p>
+                  </div>
+                  </div>
+
+                </mat-card-content>
+                <mat-card-actions>
+                  <div *ngIf="!info.res" style="display: flex;align-items: center;justify-content: space-around;">
+                    <button mat-raised-button color="primary" matTooltip="No se encuentra Apto para Inscribirse" disabled >Inscribirse</button>
+                    <button mat-raised-button  color="primary" routerLink="/Previas" routerLinkActive="active"   matTooltip="Ver grafo de dependencias"  >Visualizar Previas</button>
+                  </div>
+                  <div *ngIf="info.res" style="display: flex;align-items: center;justify-content: space-around;" >
+                    <button mat-raised-button color="primary" (click)="confirmarlectivo(info.idperiodo)" matTooltip="Se encuentra Apto para Inscribirse"  >Inscribirse</button>
+                    <button mat-raised-button  color="primary" routerLink="/Previas" routerLinkActive="active"   matTooltip="Ver grafo de dependencias"  >Visualizar Previas</button>
+                  </div>
+                  </mat-card-actions>
+              </mat-card>
+        </div>
+
+
+
+
+</div>
+
+</div>

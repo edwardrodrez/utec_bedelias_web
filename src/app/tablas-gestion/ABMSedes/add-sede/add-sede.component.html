@@ -1,0 +1,53 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Alta de Sede</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="sed.nombre" name="input1" [formControl]="nombreFormControl"  placeholder="Nombre ">
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                  Ingrese Nombre
+                </mat-error>
+              </mat-form-field>  
+              <mat-form-field class="example-full-width">
+                <mat-label>Departamento</mat-label>
+                <input matInput [(ngModel)]="sed.direccion.departamento" name="input2" [formControl]="depFormControl"  placeholder="departamento ">
+                <mat-error *ngIf="depFormControl.hasError('required')">
+                  Ingrese Departamento
+                </mat-error>
+              </mat-form-field> 
+              <mat-form-field class="example-full-width">
+                <mat-label>Ciudad</mat-label>
+                <input matInput [(ngModel)]="sed.direccion.ciudad" name="input3" [formControl]="ciuFormControl"   placeholder="ciudad">
+                <mat-error *ngIf="ciuFormControl.hasError('required')">
+                  Ingrese Ciudad
+                </mat-error>
+              </mat-form-field>   
+              <mat-form-field class="example-full-width">
+                <mat-label>Calle</mat-label>
+                <input matInput [(ngModel)]="sed.direccion.calle" name="input4" [formControl]="calFormControl"  placeholder="calle ">
+                <mat-error *ngIf="calFormControl.hasError('required')">
+                  Ingrese Calle
+                </mat-error>
+              </mat-form-field>  
+        <mat-label style="color: steelblue;font-weight: 600;">Carreras que se dictaran en esa Sede:</mat-label>
+        <div class="example-container" style="padding-top: 8px;display: block;height: 10vh;overflow-y: auto;">
+            <mat-selection-list [(ngModel)]="valorSelect" multiple name="valorSelect" #shoes>
+                <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe.idcarrera">
+                  {{shoe.nombre}}
+                </mat-list-option>
+              </mat-selection-list>
+        </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button  color="primary" (click)="postSede()">Confirmar Sede</button></div>
+        </div>
+
+
+      </form>

@@ -1,0 +1,21 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Aceptacion de Postulante</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 10px;padding-bottom: 10px;">
+            <div style="padding-top: 10px;padding-bottom: 10px;">
+                <p>El Usuario {{data.persona.nombre}} {{data.persona.apellido}} sera aceptado, desea confirmar?</p>
+            </div>
+  
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-button (click)="confirmar()"  color="primary">Aceptar</button></div>
+        </div>
+
+
+      </form>

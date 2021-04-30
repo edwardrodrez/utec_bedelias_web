@@ -1,0 +1,107 @@
+<mat-toolbar [color]="color">
+    <span color="primary"style="padding-top: 10px;cursor: pointer;display: flex;width: 60vh;justify-content: space-between;">
+        <mat-icon style="font-size: xxx-large; "  (click)="opened = !opened" >menu</mat-icon>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" >
+            <mat-button-toggle value="Admin" (change)="onValChange($event.value)">Admin</mat-button-toggle>
+            <mat-button-toggle value="Estudiante" (change)="onValChange($event.value)">Estudiante</mat-button-toggle>
+            <mat-button-toggle value="Docente" (change)="onValChange($event.value)">Docente</mat-button-toggle>
+            <mat-button-toggle value="Secretario" (change)="onValChange($event.value)">Secretario</mat-button-toggle>
+        </mat-button-toggle-group>
+    </span>
+    <span class="mode">
+        <h1>Pepito Ramirez</h1>
+          
+    </span>
+
+</mat-toolbar>
+<mat-sidenav-container>s
+    <mat-sidenav #sideNav [(opened)]="opened" mode="side"> 
+        <!--MENU PARA ADMINISTRADOR-->
+        <div *ngIf="mode == 'Admin'">
+            <div class="tit-menu" style="color: darkorange;"><h1>MENU (Admin)</h1></div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/Sedes" routerLinkActive="active">Sedes</a>
+                <a mat-list-item routerLink="/AreasdeEstudio" routerLinkActive="active">Areas de Estudio</a>
+                <a mat-list-item routerLink="/TiposdeCursos" routerLinkActive="active">Tipos de Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Docentes" routerLinkActive="active">Docentes</a>
+                <a mat-list-item routerLink="/Carreras" routerLinkActive="active">Carreras</a>
+                <a mat-list-item routerLink="/Cursos" routerLinkActive="active">Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/PeriodosdeInscripcion" routerLinkActive="active">Periodos de Inscripcion</a>
+                <a mat-list-item routerLink="/PeriodosLectivos" routerLinkActive="active">Periodos Lectivos</a>
+                <a mat-list-item routerLink="/PeriodosdeExamenes" routerLinkActive="active">Periodos de Examenes</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item><div style="width: 100%; text-align: center;">Cerrar Session</div></a>
+                
+            </mat-nav-list>
+        </div>
+
+        <!--MENU PARA ESTUDIANTE-->
+        <div *ngIf="mode == 'Estudiante'">
+            <div class="tit-menu" style="color: darkorange;"><h1>MENU (Estudiante)</h1></div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/Sedes" routerLinkActive="active">Sedes</a>
+                <a mat-list-item routerLink="/AreasdeEstudio" routerLinkActive="active">Areas de Estudio</a>
+                <a mat-list-item routerLink="/TiposdeCursos" routerLinkActive="active">Tipos de Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Docentes" routerLinkActive="active">Docentes</a>
+                <a mat-list-item routerLink="/Carreras" routerLinkActive="active">Carreras</a>
+                <a mat-list-item routerLink="/Cursos" routerLinkActive="active">Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/PeriodosdeInscripcion" routerLinkActive="active">Periodos de Inscripcion</a>
+                <a mat-list-item routerLink="/PeriodosLectivos" routerLinkActive="active">Periodos Lectivos</a>
+                <a mat-list-item routerLink="/PeriodosdeExamenes" routerLinkActive="active">Periodos de Examenes</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item><div style="width: 100%; text-align: center;">Cerrar Session</div></a>
+            </mat-nav-list>
+        </div>
+
+    <!--MENU PARA DOCENTE-->
+        <div *ngIf="mode == 'Docente'">
+            <div class="tit-menu" style="color: darkorange;"><h1>MENU (Docente)</h1></div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/Sedes" routerLinkActive="active">Sedes</a>
+                <a mat-list-item routerLink="/AreasdeEstudio" routerLinkActive="active">Areas de Estudio</a>
+                <a mat-list-item routerLink="/TiposdeCursos" routerLinkActive="active">Tipos de Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Docentes" routerLinkActive="active">Docentes</a>
+                <a mat-list-item routerLink="/Carreras" routerLinkActive="active">Carreras</a>
+                <a mat-list-item routerLink="/Cursos" routerLinkActive="active">Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/PeriodosdeInscripcion" routerLinkActive="active">Periodos de Inscripcion</a>
+                <a mat-list-item routerLink="/PeriodosLectivos" routerLinkActive="active">Periodos Lectivos</a>
+                <a mat-list-item routerLink="/PeriodosdeExamenes" routerLinkActive="active">Periodos de Examenes</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item><div style="width: 100%; text-align: center;">Cerrar Session</div></a>
+            </mat-nav-list>
+        </div>
+
+    <!--MENU PARA SECRETARIO-->
+        <div *ngIf="mode == 'Secretario'">
+            <div class="tit-menu" style="color: darkorange;"><h1>MENU (Secretario)</h1></div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/Sedes" routerLinkActive="active">Sedes</a>
+                <a mat-list-item routerLink="/AreasdeEstudio" routerLinkActive="active">Areas de Estudio</a>
+                <a mat-list-item routerLink="/TiposdeCursos" routerLinkActive="active">Tipos de Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/Docentes" routerLinkActive="active">Docentes</a>
+                <a mat-list-item routerLink="/Carreras" routerLinkActive="active">Carreras</a>
+                <a mat-list-item routerLink="/Cursos" routerLinkActive="active">Cursos</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item routerLink="/PeriodosdeInscripcion" routerLinkActive="active">Periodos de Inscripcion</a>
+                <a mat-list-item routerLink="/PeriodosLectivos" routerLinkActive="active">Periodos Lectivos</a>
+                <a mat-list-item routerLink="/PeriodosdeExamenes" routerLinkActive="active">Periodos de Examenes</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item><div style="width: 100%; text-align: center;">Cerrar Session</div></a>
+            </mat-nav-list>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

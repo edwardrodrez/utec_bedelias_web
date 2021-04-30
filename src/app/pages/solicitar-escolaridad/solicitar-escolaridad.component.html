@@ -1,0 +1,60 @@
+<div class="container" style="background: #00B4DB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+<mat-card class="example-card" style="    margin: 20px;background: white;color: rgb(0, 0, 0);">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Solicitud de Escolaridad</mat-card-title>
+      <mat-card-subtitle>Disponible al momento que la necesites. </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <div style="display: flex;justify-content: space-between;">
+      <div>
+        <mat-card class="example-card" style="background: darkorange;height: 40vh;margin: 20px;">
+          <mat-card-header>
+            <mat-card-title style="color: white;">Carreras</mat-card-title>
+            <mat-card-subtitle>En las que te encuentras inscripto.</mat-card-subtitle>
+          </mat-card-header>
+         
+          <mat-card-content>
+            <div *ngIf="carrerasUs.length&&loading" style="width: 500px;">
+              <mat-selection-list #shoes [multiple]="false" >
+                <mat-list-option *ngFor="let car of carrerasUs" [value]="car" style="color: white;">
+                    <div style="display:flex; justify-content:space-between;align-items:center">
+                      
+                          <div>
+                            <h3 matLine style="margin: 0;"> {{car.nombre}}</h3>
+                          </div>
+                 
+                        <div>
+                          <button mat-raised-button  matTooltip="Solicita tu escolaridad" (click)="getEscolaridad(car.idcarrera)">
+                            <mat-icon>description</mat-icon>
+                          </button>
+                        </div>
+                   
+
+                    </div>  
+                </mat-list-option>
+              </mat-selection-list> 
+            </div>
+            <div  class="uploader-status" *ngIf="!loading" style="display: flex;align-items: center;justify-content: center;color: white;width: 500px;">
+                <mat-spinner color="warn" strokeWidth="2" [diameter]="40"></mat-spinner>
+            </div>
+            <div *ngIf="!carrerasUs.length&&loading" style="display: flex;align-items: center;justify-content: center;color: white;width: 500px;">
+                 No hay datos que mostrar..
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+
+     
+  </div>
+
+
+
+
+
+</div>

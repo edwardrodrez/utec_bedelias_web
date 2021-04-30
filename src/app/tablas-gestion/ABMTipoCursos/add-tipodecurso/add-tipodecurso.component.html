@@ -1,0 +1,24 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Registro de Tipo de Curso</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput name="input1" [(ngModel)]="nombre" [formControl]="nombreFormControl"  placeholder="Nombre ">
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                    Ingrese Nombre
+                  </mat-error>
+              </mat-form-field>  
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button  color="primary"(click)="postTipoDeCurso()">Confirmar </button></div>
+        </div>
+
+
+      </form>

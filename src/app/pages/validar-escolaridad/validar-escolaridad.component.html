@@ -1,0 +1,45 @@
+<div class="container" style="padding: 20px;">
+    <div >
+        <h1 style="color: white;">Validación de Escolaridad</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <p style="color: azure;width: 50vh;">Puedes saber si la autenticidad de una escolaridad es válida, la misma podrás descargarla en formato PDF y así contar con ella cada vez que la precises, recuerda que tiene vencimiento.</p>
+            
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div style="display: flex;align-items: center;justify-content: center;">
+        <div class="courses-container">
+            <div class="course">
+                <form class="example-form" >
+      
+                    <div style="padding-top: 20px;padding-bottom: 30px;">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Código de Validación</mat-label>
+                            <input matInput [(ngModel)]="codigoescolaridad" name="input1"  [formControl]="codigo">
+                            <mat-error *ngIf="codigo.hasError('required')">
+                                Ingrese un código
+                             </mat-error>
+                          </mat-form-field>  
+
+                    </div>
+                    <mat-divider></mat-divider>
+                    <form [formGroup]="aFormGroup">
+                        <ngx-recaptcha2 #captchaElem [theme]="theme" [siteKey]="siteKey" formControlName="recaptcha">
+                        </ngx-recaptcha2>
+
+                    </form>
+                   
+                    <div style="display: flex;justify-content: flex-end;padding: 10px;">
+                        <div><button mat-flat-button  color="primary" matTooltip="Verificar autenticidad" (click)="validarEscolaridad()">Iniciar Verificación</button></div>
+                    </div>
+            
+            
+                  </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

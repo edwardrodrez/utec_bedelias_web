@@ -1,0 +1,30 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">No aceptacion de Postulante</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 10px;padding-bottom: 10px;">
+            <div style="padding-top: 10px;padding-bottom: 10px;">
+                <p>El Usuario {{data.persona.nombre}} {{data.persona.apellido}} no sera aceptado a la carrera, desea confirmar?</p>
+            </div>
+            <mat-divider></mat-divider>
+            <div style="padding-top: 10px;padding-bottom: 10px;">
+                <p>Se le notificara via email a {{data.persona.correo}}</p>
+            </div>
+            <mat-divider></mat-divider>
+            <mat-form-field class="example-full-width">
+                <mat-label>Comentario de Notificacion</mat-label>
+                <textarea [(ngModel)]="comentario"  [ngModelOptions]="{standalone: true}" matInput placeholder="Ex. La razon por..."></textarea>
+            </mat-form-field>
+  
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-button  (click)="confirmar()" color="primary">Aceptar y Enviar</button></div>
+        </div>
+
+
+      </form>

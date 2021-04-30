@@ -1,0 +1,53 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Ingreso de Certificado</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+                <div style="padding-top: 20px;padding-bottom: 30px;">
+                  <mat-label>Ingrese CI. del Usuario</mat-label>
+                    <mat-form-field class="example-full-width">
+                          <input  [(ngModel)]="ci" min="0" type="number" matInput [formControl]="ciFormControl" name="input5">
+                          <mat-error *ngIf="ciFormControl.hasError('required')">
+                            Ingrese CI.
+                          </mat-error>
+                          <mat-error *ngIf="ciFormControl.hasError('minlength')">
+                            Ingrese una CI. valida
+                          </mat-error>
+                          <mat-error *ngIf="ciFormControl.hasError('maxlength')">
+                            Ingrese una CI. valida
+                          </mat-error>
+                    </mat-form-field>
+                
+              </div>
+              <mat-form-field appearance="fill">
+                <mat-label>Fecha Inicial </mat-label>
+                <input matInput [(ngModel)]="dat" [ngModelOptions]="{standalone: true}" [formControl]="fecha1FormControl" [matDatepicker]="picker" placeholder="Date" class="form-control" >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="fecha1FormControl.hasError('required')">
+                  Ingrese una fecha.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Fecha Final</mat-label>
+                <input matInput [(ngModel)]="dat2" [ngModelOptions]="{standalone: true}" [formControl]="fecha2FormControl" [matDatepicker]="picker2" placeholder="Date" class="form-control" >
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="fecha2FormControl.hasError('required')">
+                  Ingrese una fecha.
+                </mat-error>
+              </mat-form-field>
+
+
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-button  color="primary" (click)="getEstudiante()">Ingresar</button></div>
+        </div>
+
+
+      </form>

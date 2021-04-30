@@ -1,0 +1,82 @@
+<div class="container">
+    <div >
+        <h1>Sedes</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <p style="color: azure;width: 50vh;">Gestión de sede, indica el nombre de la sede, así como su ubicación además de las carreras que se dictaran en la misma.</p>
+            <button mat-button  matTooltip="Crear nueva Sede" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" (click)= "addSede()"><span class="material-icons">
+                add
+                </span>Crear</button>
+            
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div class="tablas" style="display: flex;justify-content: space-between;">
+    <div class="carreras">
+        <h1 style="font-size: 2vh;padding-top: 10px;">Sedes Registradas : </h1>
+        <table mat-table
+                [dataSource]="dataSource" multiTemplateDataRows
+                class="mat-elevation-z8" style="width: 100vh;" >
+            <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Nombre </th>
+            <td mat-cell *matCellDef="let element" matTooltip="Seleccionar Registro" style="text-align: center;cursor: pointer;"> {{element.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="departamento">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Departamento </th>
+                <td mat-cell *matCellDef="let element" matTooltip="Seleccionar Registro" style="text-align: center;cursor: pointer;"> {{element.direccion.departamento}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ciudad">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Ciudad </th>
+                <td mat-cell *matCellDef="let element" matTooltip="Seleccionar Registro" style="text-align: center;cursor: pointer;"> {{element.direccion.ciudad}} </td>
+            </ng-container>
+            <ng-container matColumnDef="calle">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Calle </th>
+                <td mat-cell *matCellDef="let element" matTooltip="Seleccionar Registro" style="text-align: center;cursor: pointer;"> {{element.direccion.calle}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> 
+                    <button mat-flat-button (click)="carrerasSede(element)"style="background-color: teal;color: white;margin: 10px;" matTooltip="Ver Sedes y Cursos" ><span class="material-icons">input</span></button>
+                    <button mat-flat-button color="primary" matTooltip="Modificar registro"  (click)="modSede(element)" style="margin: 10px;"><span class="material-icons">edit</span></button>
+                    <button mat-flat-button color="warn" matTooltip="Eliminar registro" (click)="elimSede(element.idsede)" style="margin: 10px;"><span class="material-icons">delete</span></button>
+                </td>
+            </ng-container> 
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+    </div>
+    
+    <div class="cursos">
+        
+
+        <h1 style="font-size: 2vh;padding-top: 10px;">Carreras que se dictan : </h1>
+        <div style="    background: steelblue;width: 30vh;height: 30vh;overflow-y: auto;display: flex;flex-direction: column;justify-content: start;">
+
+
+
+            <mat-nav-list  *ngFor="let car of carreras"> 
+                <mat-list-item style="color: azure;font-weight: 500;">
+                    <div class="item-lis" style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+                        {{car.nombre}}
+                        <button mat-button  matTooltip="Quitar Carreras" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" (click)="quitarCarreras(car)"><span class="material-icons">delete</span></button>     
+                    </div>
+
+                </mat-list-item>       
+
+            </mat-nav-list>
+
+            <mat-divider></mat-divider>     
+        </div>
+        <div style="display: flex;align-items: center;justify-content: center;padding:10px;background: steelblue;border-top: 1px solid;"> 
+            <button mat-button  matTooltip="Agregar mas Carreras" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" (click)="incluirCarreras()"><span class="material-icons">
+                add
+                </span></button>  
+
+        </div> 
+    </div>
+
+
+</div>

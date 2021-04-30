@@ -1,0 +1,59 @@
+.content{
+    padding: 20px;
+    height: 100vh;
+
+}
+.select{
+
+    flex-direction: row;
+}
+.insc{
+    margin: 20px;
+}
+.carr{
+    width: 55vh;
+
+ }
+ .per{
+    width: 70vh;
+
+ }
+ .carr-list{
+
+    height: 20vh;
+    overflow-y: auto;
+ }
+ .per-list{
+
+    height: 20vh;
+    overflow-y: auto;
+ }
+ .dat-per{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: -webkit-fill-available;
+    flex-wrap: wrap;
+ }
+@media all and (max-width: 600px) {
+    .content {
+        height: auto;
+    }
+    .select {
+      /* On small screens, we are no longer using row direction but column */
+      flex-direction: column;
+    }
+    .carr{
+       width: 100%;
+    }
+    .per{
+       width: 100%; 
+       margin-top: 20px;
+    }
+  }
+
+
+
+
+ 
+ 

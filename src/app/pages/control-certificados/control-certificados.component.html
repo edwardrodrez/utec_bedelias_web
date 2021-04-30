@@ -1,0 +1,47 @@
+<div class="container" style="padding: 20px;">
+    <div >
+        <h1>Control de Certificados</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <p style="color: azure;width: 50vh;">Control de Certificados, indica su fecha incicial, asi como su fecha final ademas de los cursos que se dictaran en la misma. 
+                Tienes la opcion de poder agregar tantos como la misma con lleve.</p>
+            <button mat-button matTooltip="Ingresar Nuevo Certificado"   style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;"><span class="material-icons">
+                add
+                </span>Ingreso</button>
+            
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div class="tablas" style="display: flex;justify-content: space-between;">
+    <div class="carreras" style="width: 100%;">
+        <h1 style="font-size: 2vh;padding-top: 10px;">Certificados Registrados en el sistema: </h1>
+
+
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows
+        class="mat-elevation-z8" style="width: 100%;">
+            <!-- Position Column -->
+            <ng-container matColumnDef="fechaInicial">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Fecha Inicial</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaInicial}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaFinal">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Fecha Final </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaFinal}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="usuario">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Estudiante </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.usuario}} </td>
+            </ng-container>
+
+
+          
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table> 
+
+    </div>
+    </div>

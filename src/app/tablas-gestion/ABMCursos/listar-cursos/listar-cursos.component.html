@@ -1,0 +1,95 @@
+<div class="container" style="padding: 20px;">
+    <div >
+        <h1>Cursos</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <p style="color: azure;width: 50vh;">Gestión de cursos, indica el nombre del curso, así como su tipo además de los créditos que tiene en la misma.</p>
+            <button mat-button matTooltip="Crear Nuevo Curso"(click)="addCurso()" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;"><span class="material-icons">
+                add
+                </span>Crear</button>
+            
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div class="tablas" style="display: flex;justify-content: space-between;">
+    <div class="carreras">
+        <h1 style="font-size: 2vh;padding-top: 10px;">Cursos Registrados</h1>
+
+
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows
+        class="mat-elevation-z8" style="width: 80vh;">
+            <!-- Position Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Nombre </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TipodeCurso">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Tipo de Curso </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.tipo_de_curso.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="creditos">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Créditos</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.credito}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> 
+                    <button mat-flat-button style="background-color: teal;color: white;margin: 10px;" matTooltip="Ver carreras" (click)="getCarrerasCurso(element)" ><span class="material-icons">input</span></button>
+                    <button mat-flat-button style="margin: 10px;" color="primary" matTooltip="Modificar registro" (click)="modCurso(element)"><span class="material-icons">edit</span></button>
+                    <button mat-flat-button style="margin: 10px;" color="warn" matTooltip="Eliminar registro"(click)="elimCurso(element)"><span class="material-icons">delete</span></button>
+                </td>
+            </ng-container> 
+          
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table> 
+    </div>
+    <div class="cursos"  >
+        
+
+        <h1 style="font-size: 2vh;padding-top: 10px;">Carreras en los que se encuentra: </h1>
+        <div style="background: steelblue;width:30vh;height: 40vh;overflow-y: auto;">
+            <mat-nav-list  *ngFor="let car of carreras"  > 
+                <mat-list-item style="color: azure;font-weight: 500;"><div class="item-lis" style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+                   {{car.nombre}}
+                    <button mat-button  matTooltip="Ver Previas"  (click)="getPrevias(car)" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" ><span class="material-icons">input</span></button>
+                </div>
+                </mat-list-item>      
+
+            </mat-nav-list>
+        </div>
+    </div>
+
+
+
+    <div class="cursos">      
+        <h1 style="font-size: 2vh;padding-top: 10px;">Previas : </h1>
+        <div style="    background: steelblue;width: 30vh;height: 30vh;overflow-y: auto;display: flex;flex-direction: column;justify-content: start;">
+            <mat-nav-list  *ngFor="let pre of previas" > 
+                <mat-list-item style="color: azure;font-weight: 500;"><div class="item-lis" style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+                    {{pre.curso.nombre}}  
+                    <br>
+                    Tipo:{{pre.tipoPrevia}}
+                    <button mat-button  matTooltip="Quitar Previa" (click)="quitarPrevia(pre.idprevia)"  style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" ><span class="material-icons">delete</span></button>
+                </div>
+                </mat-list-item>      
+                <hr>
+            </mat-nav-list>
+
+            <mat-divider></mat-divider>     
+
+        </div>
+        <div style="display: flex;align-items: center;justify-content: center;padding:10px;background: steelblue;border-top: 1px solid white;"> 
+            <button mat-button  matTooltip="Agregar Previas" (click)="addPrevia()" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" ><span class="material-icons">
+                add
+                </span></button>  
+        </div> 
+    </div>
+
+</div>
+
+</div>

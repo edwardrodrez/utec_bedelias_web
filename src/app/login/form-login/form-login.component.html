@@ -1,0 +1,38 @@
+
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Iniciar Sesión</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario</mat-label>
+          <input matInput [(ngModel)]="registroDTO.nombre" name="input1" [formControl]="nombreFormControl" placeholder="nombre.apellido">
+          <mat-error *ngIf="nombreFormControl.hasError('nombre')">
+            Ingrese un nombre valido
+          </mat-error>
+          <mat-error *ngIf="nombreFormControl.hasError('required')">
+            Ingrese nombre
+          </mat-error>
+        </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input matInput [(ngModel)]="registroDTO.password" type="password" name="input2" [formControl]="passFormControl">
+              <mat-error *ngIf="passFormControl.hasError('required')">
+                Ingrese Password
+              </mat-error>
+              <mat-error *ngIf="passFormControl.hasError('minlength')">
+                Como minimo {{passFormControl.errors.minlength.requiredLength}}  caracteres
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Close</button></div>
+            <div><button mat-raised-button (click)="login()" color="primary" >Login</button></div>
+        </div>
+
+      </form>

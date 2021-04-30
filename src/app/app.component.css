@@ -1,0 +1,149 @@
+html::-webkit-scrollbar {
+    display: none;
+}
+h1{
+    font-size: initial;
+    font-weight: 600;
+    color: navy;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+.tit-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+.sub-menu{
+    padding-left: 10px;
+}
+
+.header{
+    position: fixed;
+    height: 10vh;
+    z-index: 100;
+    width: 100%  !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hamb {
+    position: fixed;
+    display: flex;
+    height: 7vh;
+    top: 10vh;
+    z-index: 100;
+    width: 100%  !important;
+    align-items: center;
+    justify-content: space-between;
+}
+.mode{
+    display: flex;
+    align-items: center;
+    width: 30vh;
+    justify-content: space-around;
+}
+.navbar{
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    padding-top: 20vh; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+mat-sidenav{
+    width: 300px;
+    cursor: pointer;
+    position: fixed;
+    padding-top: 17vh;
+    z-index: 1000;
+}
+
+mat-sidenav-content{
+
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.mat-tooltip.tooltip {
+    background-color: darkblue;
+    font-size: 12px;
+  }
+
+  .dinam{
+    padding-top: 17vh;
+    position: relative;
+  }
+
+  
+/* Absolute Center Spinner */
+.uploader-status {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: bottom;
+}
+  
+    /* Transparent Overlay */
+.uploader-status:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1488CC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+::ng-deep .mat-tooltip {
+    background: rgb(83, 64, 168)!important;
+    font-size: 12px!important;
+  }
+
+  
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color:rgb(51, 50, 50) steelblue;
+  }
+  
+  
+  /* Works on Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  *::-webkit-scrollbar-track {
+    background:steelblue;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(51, 50, 50);
+    border-radius: 20px;
+    border: 3px solid steelblue;
+  }
+
+  mat-button-toggle {
+    border: 1px solid #533ac2;
+    border-radius: 4px;
+    width: 90px;
+    height: 30px;
+    font-family: 'Nunito Semibold', sans-serif;
+    font-size: 14px;
+    font-style: bold;
+}
+
+.mat-button-toggle-checked {
+    background-color: darkorange;
+    color: white;
+}

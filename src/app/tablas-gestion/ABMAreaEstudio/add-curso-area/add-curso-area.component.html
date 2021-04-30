@@ -1,0 +1,25 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Añadir Cursos al Área de Estudio</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+        <mat-label style="color: steelblue;font-weight: 600;">Seleccione Cursos a agregar:</mat-label>
+        <div class="example-container" style=" margin-top: 10px;">
+            <mat-selection-list [(ngModel)]="elegidos" [ngModelOptions]="{standalone: true}"  #shoes>
+                <mat-list-option *ngFor="let shoe of cursos" [value]="shoe">
+                  {{shoe.nombre}}
+                </mat-list-option>
+              </mat-selection-list>
+        </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button (click)="addCurso()" color="primary">Agregar curso</button></div>
+        </div>
+
+
+      </form>

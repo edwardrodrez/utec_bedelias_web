@@ -1,0 +1,38 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Agregar Previas </h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+      
+        <mat-label style="color: steelblue;font-weight: 600;">Seleccione las Previas a incluir :</mat-label>
+        <div class="example-container" style=" margin-top: 10px;overflow-y: auto;height: 20vh;">
+            <mat-selection-list [(ngModel)]="cursoP" [ngModelOptions]="{standalone: true}" #shoes [multiple]="false">
+                <mat-list-option *ngFor="let shoe of typesOfShoes"  [value]="shoe">
+                  {{shoe.nombre}}
+                </mat-list-option>
+              </mat-selection-list>
+        </div>
+        <div style="display: flex;align-items: center;padding-top: 20px;">
+          <p>
+            Previa Seleccionada : </p> <p style="color: darkorange;"> {{shoes.selectedOptions.selected[0]?.value.nombre}}</p>
+        </div>
+        <mat-form-field >
+
+          <mat-select  [(ngModel)]="previa.tipoPrevia"  [ngModelOptions]="{standalone: true}" [(value)]="selected" >
+            <mat-option value="Previa Aprobada">Previa Aprobada</mat-option>
+            <mat-option value="Con Derecho a Examen">Con Derecho a Examen</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button  (click)="addPrevia()" color="primary">Añadir Previa</button></div>
+        </div>
+
+
+      </form>

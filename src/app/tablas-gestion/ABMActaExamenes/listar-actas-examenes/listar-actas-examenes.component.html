@@ -1,0 +1,82 @@
+<div class="container" style="padding: 20px;">
+    <div >
+        <h1>Cierre de actas de examenes</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <div>
+                <p style="color: azure;width: 50vh;">Cierre de actas de examenes</p>
+            </div>
+
+
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div class="tablas" style="display: flex;justify-content: space-between;">
+    <div class="carreras" style="width: 100%;">
+
+        <div class="actas">
+            <div class="cursos">
+                <h1 style="font-size: 2vh;padding-top: 10px;">Periodos Examenes Activos:</h1>
+                <div style="background: steelblue;width:40vh;height: 40vh;">
+                  <mat-card-content>
+                    <mat-selection-list #shoes [multiple]="false" style="overflow-y: auto;min-width: 350px;height:40vh;">
+                      <mat-list-option *ngFor="let shoe of typesOfShoes" (click)="getActa(this.shoe.idperiodo)" [value]="shoe" style="color: white;">
+                        <div style="display: flex;align-items: center;
+                        justify-content: space-between;">
+                          <div style="width: 150px;">
+                            {{shoe.curso.nombre}} </div>
+                        <div>{{shoe.sede.direccion.departamento}}</div>
+                        <div> {{shoe.fechaInicial}}</div>
+                        </div>
+                        
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-card-content>
+                </div>
+            </div>
+
+
+        <div style="width: 70vh;">
+            <div style="display: flex;align-items: center;justify-content: space-between;">
+                <h1 style="font-size: 2vh;padding-top: 10px;">Actas Registradas en el sistema: </h1>
+                <div>
+                    <button mat-raised-button color="warn"   matTooltip="Cerrar todas las actas activas" (click)="cierreActaTodas(this.selected)" >Cerrar Todas</button>
+                </div>
+
+            </div>
+            <table mat-table
+            [dataSource]="dataSource" multiTemplateDataRows
+            class="mat-elevation-z8" style="width: 100%;">
+                <!-- Position Column -->
+                <ng-container matColumnDef="fechaInicio">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Estado</th>
+                    <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.estado}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="curso">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Calificación</th>
+                    <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.calificacion}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sede">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Estudiante</th>
+                    <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.usuario.persona.ci}} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones </th>
+                    <td mat-cell *matCellDef="let element"  style="text-align: center;">
+                      <div *ngIf="element.estado == 'calificado'">
+                        <button mat-flat-button   matTooltip="Cierre de Acta" (click)="cierreActa(element.idacta)" color="warn"><span class="material-icons">close</span></button>
+                      </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+            </table>
+
+        </div>
+    </div>
+    </div>
+
+    </div>

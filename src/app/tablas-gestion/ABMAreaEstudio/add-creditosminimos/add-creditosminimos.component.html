@@ -1,0 +1,22 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Ingreso Créditos Mínimos</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Créditos Mínimos</mat-label>
+                <input matInput [(ngModel)]="data.creditoMinimo" name="input2"  placeholder="Creditos ">
+              </mat-form-field> 
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button (click)="confirmar()" color="primary">Confirmar </button></div>
+        </div>
+
+
+      </form>

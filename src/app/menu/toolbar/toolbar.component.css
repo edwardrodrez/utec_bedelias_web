@@ -1,0 +1,54 @@
+h1{
+    font-size: initial;
+    font-weight: 600;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+.tit-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+mat-toolbar {
+    position: fixed;
+    display: flex;
+    height: 10vh;
+    z-index: 100;
+    width: 100%  !important;
+    align-items: center;
+    justify-content: space-between;
+}
+.mode{
+    display: flex;
+    align-items: center;
+    width: 50vh;
+    justify-content: space-around;
+}
+.navbar{
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 25vh; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+mat-sidenav{
+    width: 250px;
+    cursor: pointer;
+    position: fixed;
+    top: 10vh;
+    z-index: 1000;
+}
+
+mat-sidenav-content{
+    top: 10vh;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+mat-button-toggle-group{
+    font-size: 10px;
+}

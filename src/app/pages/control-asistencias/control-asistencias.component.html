@@ -1,0 +1,64 @@
+<div class="content">
+    <div style="padding: 20px;color: white;padding-bottom: 0px;">
+        <h1 style="font-size: large;">Control de Asistencias</h1>
+    </div> <mat-divider style="background: darkorange;margin: 20px;"></mat-divider>
+
+    <div class="select" style="display: flex;justify-content: space-between;;color: white;padding-top: 0px;">
+
+        <div class="carr">
+  
+  
+            <mat-card class="example-card" style="height: 50vh;min-width: 250px;margin: 20px;">
+              <mat-card-header>
+                <mat-card-title style="color: firebrick;">Cursos</mat-card-title>
+                <mat-card-subtitle>Periodos Lectivos</mat-card-subtitle>
+              </mat-card-header>
+      
+              <mat-card-content>
+                <mat-selection-list #shoes [multiple]="false" style="overflow-y: auto;min-width: 250px;height:40vh;">
+                    <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe" (click)="getClase(shoe.idperiodo,shoe.curso.nombre)" >
+                        <div class="item-lis" style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+                            <div >{{shoe.curso.nombre}} </div>
+                            <div >{{shoe.sede.nombre}} </div>
+                        </div>
+                    </mat-list-option>
+                  </mat-selection-list>
+              </mat-card-content>
+      
+            </mat-card>
+        </div>
+        <div class="per" >
+            <div *ngIf="Auxidperiodo != 0" style="display: flex;align-items: center;justify-content: space-between;padding: 20px;">
+                <p style="font-size: 1rem;">Clases </p>
+                <p style="font-size: 1rem;">{{this.nombreCurso}} </p>
+                <button mat-flat-button (click)="addClase()" color="primary" matTooltip="Añadir Clase" ><span class="material-icons">event_available</span></button>
+            </div>
+
+            <div class="per-list" style="background: white;">
+                <div class="example-container ">
+                    <table mat-table [dataSource]="dataSource">
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="fecha">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha </th>
+                        <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.fecha}} </td>
+                      </ng-container>
+
+
+                      <ng-container matColumnDef="acciones">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;" style="text-align: center;"> Asistencias de Estudiantes </th>
+                        <td mat-cell *matCellDef="let element"  style="text-align: center;" style="text-align: center;">
+                            <button mat-flat-button (click)="verAsistencias(element.idclase)" color="primary" matTooltip="Ver Asistencias" >Asistencias</button>
+                        </td>
+                    </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>

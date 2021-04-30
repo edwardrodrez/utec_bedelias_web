@@ -1,0 +1,56 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Actualizar Periodo Examen</h3>
+<mat-divider></mat-divider>
+
+<form class="example-form">
+  <div style="padding-top: 20px;padding-bottom: 30px;">
+
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Fecha que Inicia</mat-label>
+      <input matInput [(ngModel)]="ini" [ngModelOptions]="{standalone: true}" [formControl]="fecha1FormControl" [matDatepicker]="picker1" >
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-error *ngIf="fecha1FormControl.hasError('required')">
+        Ingrese Fecha
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-label style="color: steelblue;
+    text-align: center;
+    font-weight: 600;
+    ">Seleccione un Curso:</mat-label>
+    <div class="example-container" style="padding-top: 8px;display: block;height: 10vh;overflow-y: auto;">
+      <mat-selection-list #shoes [(ngModel)]="curso" [ngModelOptions]="{standalone: true}"  [multiple]="false" style="height: 10vh;
+      overflow-y: auto;">
+        <mat-list-option *ngFor="let shoe of Cursos" [value]="shoe">
+          {{shoe.nombre}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+
+    
+    <mat-label style="color: steelblue;
+    text-align: center;
+    font-weight: 600;
+    ">Seleccione su Sede:</mat-label>
+    <div class="example-container" style="padding-top: 8px;display: block;height: 10vh;overflow-y: auto;">
+      <mat-selection-list #shoes [(ngModel)]="sede" [ngModelOptions]="{standalone: true}" [multiple]="false" style="height: 10vh;
+      overflow-y: auto;">
+        <mat-list-option *ngFor="let shoe of Sedes" [value]="shoe">
+          {{shoe.nombre}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+
+   
+</div>
+    <mat-divider></mat-divider>
+    <div style="display: flex;justify-content: space-between;padding: 10px;">
+        <div><button mat-button mat-dialog-close>Cancelar</button></div>
+        <div><button  mat-raised-button (click)="update()" color="primary">Modificar Periodo</button></div>
+    </div>
+
+
+  </form>

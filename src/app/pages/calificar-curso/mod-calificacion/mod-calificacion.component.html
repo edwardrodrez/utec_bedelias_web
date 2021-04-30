@@ -1,0 +1,30 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Modificar Calificación</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nota</mat-label>
+                <input matInput name="input33"  type="number" min="0"  [(ngModel)]="ret.calificacion" [formControl]="notaFormControl"   placeholder="nota">
+                <mat-error *ngIf="notaFormControl.hasError('required')">
+                  Ingrese un valor
+                </mat-error>
+                <mat-error *ngIf="notaFormControl.hasError('min')">
+                  Ingrese un valor mayor o igual a 0
+                </mat-error>
+                <mat-error *ngIf="notaFormControl.hasError('max')">
+                  Ingrese un valor menor o igual a 5
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button (click)="calificar()" color="primary">Confirmar</button></div>
+        </div>
+
+
+      </form>

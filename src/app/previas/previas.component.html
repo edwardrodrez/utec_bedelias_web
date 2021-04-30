@@ -1,0 +1,104 @@
+<div class="container" style="background: #00B4DB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+<mat-card class="example-card" style="margin: 20px;">
+  <mat-card-header>
+    <mat-card-title>Visualización de los grafos de dependencias</mat-card-title>
+    <mat-card-subtitle>Consulta por carrera 2020</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+  </mat-card-content>
+</mat-card>
+
+<div style="display: flex;">
+  <mat-card class="example-card" style="background: darkorange;height: 500px;margin: 20px;">
+    <mat-card-header>
+      <mat-card-title style="color: white;">Seleccione una Carrera</mat-card-title>
+    </mat-card-header>
+   
+    <mat-card-content>
+      <mat-selection-list #shoes [multiple]="false" style="overflow-y: auto;min-width: 250px;height: 200px;">
+        <mat-list-option *ngFor="let shoe of dataSource" (click)="select(shoe.idcarrera)" [value]="shoe" style="color: white;">
+          {{shoe.nombre}}
+        </mat-list-option>
+      </mat-selection-list>  
+    </mat-card-content>
+
+  </mat-card>
+  <mat-card class="example-card" style="background: darkorange;height: 500px;margin: 20px;width: 100%;">
+   
+    <mat-card-content>
+      <div  class="uploader-status" *ngIf="!loading||loading" style="display: flex;align-items: center;justify-content: center;color: white;">
+        <mat-card-header>
+          <mat-card-title style="color: white;">AQUI GRAFO DE PREVIAS</mat-card-title>
+        </mat-card-header>
+
+      </div>
+      <div  class="uploader-status" *ngIf="loading||!carreraSeleccionada" style="display: flex;align-items: center;justify-content: center;color: white;">
+        <mat-card-header>
+          <mat-card-title style="color: white;">{{shoes.selectedOptions.selected[0]?.value.nombre}}</mat-card-title>
+        </mat-card-header>
+      </div>
+      <div  class="uploader-status" *ngIf="!loading" style="display: flex;align-items: center;justify-content: center;color: white;">
+        <mat-spinner color="primary" strokeWidth="4" [diameter]="40" style="top: 150px;"></mat-spinner>
+      </div>
+      <div  class="uploader-status" *ngIf="loading" >
+        <ngx-graph  *ngIf="nodos?.length > 0 && links?.length > 0"
+          class="chart-container"
+          [links]="links"
+          [nodes]="nodos"
+          [view]="[1200, 490]"
+          [autoCenter]="true"
+          [showMiniMap]="true"
+          [enableZoom]="false"  [layout]="layout"
+          [update$]="update$"
+          [draggingEnabled]="false"
+        >
+          <ng-template #defsTemplate>
+            <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+              <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+            </svg:marker>
+          </ng-template>
+        
+          
+        
+          <ng-template #nodeTemplate let-node>
+            <svg:g class="node" ngx-tooltip [tooltipPlacement]="'top'" [tooltipType]="'tooltip'" [tooltipTitle]="node.label">
+              <svg:rect
+                [attr.width]="node.dimension.width"
+                [attr.height]="node.dimension.height"
+                [attr.fill]="node.data.color"
+              />
+              <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
+                {{node.label}}
+              </svg:text>
+            </svg:g>
+          </ng-template>
+        
+          <ng-template #linkTemplate let-link>
+            <svg:g class="edge">
+              <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+              <svg:text class="edge-label" text-anchor="middle">
+                <textPath
+                  class="text-path"
+                  [attr.href]="'#' + link.id"
+                  [style.dominant-baseline]="link.dominantBaseline"
+                  startOffset="60%"
+                >
+                  {{link.label}}
+                </textPath>
+              </svg:text>
+            </svg:g>
+          </ng-template>
+        </ngx-graph>
+      </div>
+     
+      
+    </mat-card-content>
+
+  </mat-card>
+  
+</div>
+

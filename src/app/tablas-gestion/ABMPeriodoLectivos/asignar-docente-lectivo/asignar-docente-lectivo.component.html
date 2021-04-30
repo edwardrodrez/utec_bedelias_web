@@ -1,0 +1,39 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Asignación de Docente al Curso</h3>
+<mat-divider></mat-divider>
+        <div style="padding-bottom: 30px;height: 40vh;
+    overflow-y: auto;">
+            <div class="example-container mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
+                    <ng-container matColumnDef="elegir">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Selecciona</th>
+                        <td mat-cell *matCellDef="let element"  style="text-align: center;"> 
+                          <mat-radio-group [(ngModel)]="Docente">
+                            <mat-radio-button class = "tp-radio-button"
+                            [name]="radio" [value]="element" > 
+                            </mat-radio-button>
+                          </mat-radio-group>
+                          
+                        </td>
+                    </ng-container> 
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="docente">
+                    <th mat-header-cell *matHeaderCellDef  style="text-align: center;"> Docentes </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.persona.nombre}} {{element.persona.apellido}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+        </div>
+        <div *ngIf="Docente != null">Docente Seleccionado: {{Docente.persona.nombre}}</div>
+
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button (click)="asignarDocente()" color="primary">Asignar Docente</button></div>
+        </div>
+
+

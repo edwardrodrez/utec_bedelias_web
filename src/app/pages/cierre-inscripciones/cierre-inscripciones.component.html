@@ -1,0 +1,50 @@
+<div class="container" style="padding: 20px;">
+    <div >
+        <h1>Cierre de Periodo de Inscripciones a Carreras</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <p style="color: azure;width: 50vh;">Cierre de Periodo de Inscripciones a Carreras, indica su fecha inicial  ademas de su fecha inicial, asi como su ubicacion ademas de los cursos que se dictaran en la misma. 
+                Tienes la opcion de poder agregar tantos como la misma con lleve.</p>
+            
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div class="tablas" style="display: flex;justify-content: space-between;">
+    <div class="carreras" style="width: 100%;">
+        <div style="display: flex;align-items: center;justify-content: space-between;">
+            <h1 style="font-size: 2vh;padding-top: 10px;">Periodos inscripciones a Carreras Registrados en el sistema: </h1>
+
+
+        </div>
+
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows
+        class="mat-elevation-z8" style="width: 100%;">
+
+            <ng-container matColumnDef="carrera">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Carrera</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.carrera.nombre}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="fechaInicial">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Insc. Inicio</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaInicial}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="fechaFinal">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Insc. Fin</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaFinal}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="actions2">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones Insc.</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> 
+                    <button mat-flat-button   matTooltip="Cerrar Periodo Inscripcion" (click)="cerrarPeriodo(element.idperiododeincripciones)"  color="warn"><span class="material-icons">close</span></button>
+                </td>
+            </ng-container> 
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table> 
+
+    </div>
+    </div>

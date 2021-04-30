@@ -1,0 +1,558 @@
+
+.header{
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.logo {
+    margin: 20px;
+    height: 10vh;
+    width: 40vh;
+    background: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ing {
+    margin: 20px;
+    height: 10vh;
+    width: 40vh;
+    background: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 700;
+    
+}
+
+.text-logo{
+    font-size:25px;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+    
+}
+.contenido{
+
+    height: 85vh;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.contenido2{
+    height: 90vh;
+    background: darkorange;
+
+}
+ /* Responsive Styles */
+ @media screen and (max-width: 767px) {
+    .header{
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        width: 100%;
+    }
+    
+    .ing{
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .img-logo{
+        width: 10vh;
+        height: 10vh;
+    }
+
+    .text-logo{
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        color: whitesmoke;
+    }
+    .titulo{
+        font-size: 7px;
+        font-family: 'Roboto', sans-serif;
+        color: whitesmoke;
+    }
+}
+
+.titulo{
+    margin: 20px;
+    font-size: 10px;
+    height: 3vh;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+}
+.car {
+    margin: 20px;
+    height: 80vh;
+}
+.funcionalidad {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+}
+.funcionalidad2 {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+}
+h1{
+    background: bottom;
+}
+.header{
+    border: 1px solid black; 
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.menu{
+    border: 1px solid black; 
+    height: 8vh;
+    background: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+.titulo{
+    margin: 20px;
+    font-size: 10px;
+    height: 3vh;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+}
+.car {
+    margin: 20px;
+    height: 80vh;
+    border: 2px solid whitesmoke; 
+}
+.funcionalidad {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+}
+.funcionalidad2 {
+    margin: 20px;
+
+}
+
+
+.logo {
+    margin: 20px;
+    height: 10vh;
+    width: 40vh;
+    background: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ing {
+    margin: 20px;
+    height: 10vh;
+    width: 40vh;
+    background: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 700;
+    
+}
+.img-logo { 
+    background: bottom;
+}
+
+.img-logo img{ 
+    background: bottom;
+}
+.text-logo{
+    background: bottom;
+    font-size:25px;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+    
+}
+
+
+
+.mat-button{
+    background: bottom;
+    color: whitesmoke;
+    font-size: 20px;
+}
+  /* Menu */
+.mat-sidenav{
+    width: 30vh;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.mat-nav-list a:hover {
+    background: black;
+}
+mat-icon{
+    font-size: 5vh;
+    height: 5vh;
+    width: 5vh;
+    background: bottom;
+    color: #000;
+    border: none;
+}
+.menu-item{
+    background: bottom;
+    margin-left: 20px;
+    margin-top: 2vh;
+}
+
+
+
+/* Absolute Center Spinner */
+.uploader-status {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: bottom;
+}
+  
+    /* Transparent Overlay */
+.uploader-status:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.example-form {
+    min-width: 150px;
+    max-width: 700px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+
+  .courses-container {
+      width: 100%;
+  }
+
+
+
+  .course {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      max-width: 100%;
+      margin: 20px;
+      overflow: hidden;
+      height: 150px;
+  }
+  
+  .course h6 {
+      opacity: 0.6;
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+  }
+  
+  .course h2 {
+      letter-spacing: 1px;
+      margin: 10px 0;
+  }
+  
+  .course-preview {
+      background-color: darkorange;
+      color: #fff;
+      padding: 30px;
+      min-width: 300px;
+      min-width: 100px;
+
+  }
+  
+  .course-preview a {
+      color: #fff;
+      display: inline-block;
+      font-size: 12px;
+      opacity: 0.6;
+      margin-top: 30px;
+      text-decoration: none;
+  }
+  
+  .course-info {
+      padding: 30px;
+      position: relative;
+      width: 100%;
+  }
+  
+  .progress-container {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      text-align: right;
+      width: 150px;
+  }
+  
+  .progress {
+      background-color: #ddd;
+      border-radius: 3px;
+      height: 5px;
+      width: 100%;
+  }
+  
+  .progress::after {
+      border-radius: 3px;
+      background-color:  darkorange;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 66%;
+  }
+  
+  .progress-text {
+      font-size: 10px;
+      opacity: 0.6;
+      letter-spacing: 1px;
+  }
+  
+  .btn {
+      background-color:  darkorange;
+      border: 0;
+      border-radius: 50px;
+      color: #fff;
+      font-size: 16px;
+      padding: 12px 25px;
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      letter-spacing: 1px;
+      cursor: pointer;
+  }
+  .btn:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
+
+  @media screen and (max-width: 480px) {
+  
+
+  }
+
+  .cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    margin: 10px auto;
+    width: 350px;
+    height: 200px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  .card-pos{
+    margin: 10px auto;
+    background-color: whitesmoke;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  }
+  .card .card_image {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+  }
+  
+  .card .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+  }
+  a{
+      text-decoration: none;
+      color: darkorange;
+  }
+  .card .card_title {
+    text-align: center;
+    border-radius: 0px 0px 40px 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -80px;
+    height: 40px;
+  }
+  
+  .card:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
+  
+  .title-white {
+    color: white;
+  }
+  
+  .title-black {
+    color: black;
+  }
+  
+  @media all and (max-width: 500px) {
+    .card-list {
+      /* On small screens, we are no longer using row direction but column */
+      flex-direction: column;
+    }
+  }
+  
+  
+  /*
+  .card {
+    margin: 30px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    transition: 0.4s;
+  }
+  */
+
+
+
+  
+* {
+    scrollbar-width: thin;
+    scrollbar-color: darkorange white;
+  }
+  
+  
+  /* Works on Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  *::-webkit-scrollbar-track {
+    background: white;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: darkorange;
+    border-radius: 20px;
+    border: 3px solid  white;
+  }
+
+  .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    display: block;
+    height: 48px;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0;
+}
+
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+
+/** custom CSS as per your :required */
+::ng-deep .mat-horizontal-stepper-header {
+    height:25px !important;
+
+}
+::ng-deep .mat-selection-list {
+    height:30vh !important;
+    overflow-y: auto;
+}
+
+::ng-deep .mat-horizontal-content-container {
+    overflow: hidden;
+    padding: 0 0 0 0!important;
+    border-radius: 20px;
+}
+
+::ng-deep .owl-prev{
+    background-color: darkorange!important;
+}
+::ng-deep .owl-next{
+    background-color: darkorange!important;
+}
+/*
+::ng-deep .mat-simple-snackbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 20px;
+    opacity: 1;
+ 
+}
+
+::ng-deep .mat-simple-snackbar-action button {
+    max-height: 36px;
+    min-width: 0;
+    background-color: #ddd;
+    display: none;
+}
+
+
+::ng-deep .mat-snack-bar-container {
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin: 24px;
+    max-width: 33vw;
+    min-width: 344px;
+    padding: 14px 16px;
+    min-height: 48px;
+    transform-origin: center;
+    background-color: #ddd;
+    color: black;
+} */
+
+::ng-deep .notificar-usuario{
+    background-color: white;
+    color: black;
+    margin-top: 12vh !important;
+}
+
+::ng-deep .notificar-error{
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,37 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Alta de Curso</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput name="input1" [(ngModel)]="cur.nombre" [formControl]="nombreFormControl"  placeholder="Nombre ">
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                  Ingrese Nombre
+                </mat-error>
+              </mat-form-field>  
+              <mat-form-field class="example-full-width">
+                <mat-label>Créditos</mat-label>
+                <input matInput name="input2" [(ngModel)]="cur.credito" type="number" min="0" [formControl]="creFormControl" placeholder="Creditos ">
+                <mat-error *ngIf="creFormControl.hasError('required')">
+                  Ingrese Créditos
+                </mat-error>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Seleccione el Tipo de Curso</mat-label>
+                <mat-select [(ngModel)]="cur.tiposdecurso"  [ngModelOptions]="{standalone: true}">
+                  <mat-option *ngFor="let tipo of tipos" [value]="tipo">{{tipo.nombre}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button (click)="postCurso()" color="primary">Confirmar Curso</button></div>
+        </div>
+
+
+      </form>

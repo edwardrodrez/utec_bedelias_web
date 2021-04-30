@@ -1,0 +1,94 @@
+<div class="container" style="padding: 20px;">
+    <div >
+        <h1>Periodos Lectivos</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <p style="color: azure;width: 50vh;">Gestión de períodos de inscripciones, indica la fecha que inicia, que finaliza y el curso que corresponde.</p>
+            <button mat-button matTooltip="Crear Periodo Lectivo"  (click)="addLectivo()" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;"><span class="material-icons">
+                add
+                </span>Crear</button>
+            
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div class="tablas" style="display: flex;justify-content: space-between;">
+    <div class="carreras" style="width: 100%;">
+        <div style="display: flex;align-items: center;justify-content: space-between;">
+            <h1 style="font-size: 2vh;padding-top: 10px;">Periodos Lectivos Registrados en el sistema: </h1>
+            <div>
+                <button mat-raised-button color="primary" (click)="getActivos()" style="margin: 10px;"  matTooltip="Filtrar Periodos Lectivos Activos"  >Activos</button>  
+                <button mat-raised-button color="primary" (click)="getPeriodos()" style="margin: 10px;"  matTooltip="Ver Todos"  >Todos</button>  
+            </div>
+
+        </div>
+
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows
+        class="mat-elevation-z8" style="width: 100%;">
+            <!-- Position Column -->
+            <ng-container matColumnDef="fechaInicio">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Fecha Inicio</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaInicial}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaFinal">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Fecha Fin </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaFinal}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="curso">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Curso</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.curso.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sede">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Sede </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.sede.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="docente" >
+            
+                <th mat-header-cell  *matHeaderCellDef style="text-align: center;" > Docente</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;" ><p *ngIf="element.docente == null" style="color:firebrick;">Sin Asignar</p> <p *ngIf="element.docente != null">{{element.docente.persona.nombre}} {{element.docente.persona.apellido}}</p> </td>
+            
+            </ng-container>
+            <ng-container matColumnDef="docenteci" >
+            
+                <th mat-header-cell  *matHeaderCellDef style="text-align: center;" > Docente CI.</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;" ><p *ngIf="element.docente == null" style="color:firebrick;">Sin Asignar</p> <p *ngIf="element.docente != null">{{element.docente.persona.ci}}</p> </td>
+            
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> 
+                    <button mat-flat-button (click)="asignarDocente(element)"  matTooltip="Asignar Docente"  color="primary" style="margin: 10px;"><span class="material-icons">how_to_reg</span></button>
+                    <button mat-flat-button  (click)="clonLectivo(element)" style="background-color: teal;color: white;margin: 10px;"  matTooltip="Clonar Periodo" ><span class="material-icons">file_copy</span></button>
+                    <button mat-flat-button (click)="modLectivo(element)"  matTooltip="Modificar registro"  color="primary" style="margin: 10px;"><span class="material-icons">edit</span></button>
+                    <button mat-flat-button  (click)="elimLectivo(element)" matTooltip="Eliminar registro" color="warn" style="margin: 10px;"><span class="material-icons">delete</span></button>
+                </td>
+            </ng-container> 
+          
+            <ng-container matColumnDef="fechaInscripcionInicio">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Insc. Inicio</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"><p style="color:firebrick;" *ngIf="element.fechainscripcion == null">Sin Asignar</p>  <p *ngIf="element.fechainscripcion != null">{{element.fechainscripcion.fechaInicial}}</p> </td>
+            </ng-container> 
+            <ng-container matColumnDef="fechaInscripcionFin">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Insc. Fin</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"><p style="color:firebrick;" *ngIf="element.fechainscripcion == null">Sin Asignar</p> <p *ngIf="element.fechainscripcion != null">{{element.fechainscripcion.fechaFinal}}</p> </td>
+            </ng-container> 
+            <ng-container matColumnDef="actions2">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones Insc.</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> 
+                    <button mat-flat-button  (click)="estaPeriodo(element)" style="background-color: chocolate;color: white;margin: 10px;"  matTooltip="Establecer Periodo Inscripcion" ><span class="material-icons">today</span></button>
+                    <button mat-flat-button (click)="modPeriodo(element)"  matTooltip="Modificar Periodo Inscripcion" style="margin: 10px;"  color="primary"><span class="material-icons">edit</span></button>
+                </td>
+            </ng-container> 
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table> 
+
+    </div>
+    </div>

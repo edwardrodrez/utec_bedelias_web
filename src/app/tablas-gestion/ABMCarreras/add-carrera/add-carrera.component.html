@@ -1,0 +1,42 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Alta de Carrera</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput name="input1"  [(ngModel)]="carr.nombre" [formControl]="nombreFormControl" placeholder="Nombre ">
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                  Ingrese Nombre
+                </mat-error>
+              </mat-form-field>  
+              <mat-form-field class="example-full-width">
+                <mat-label>Créditos</mat-label>
+                <input matInput name="input3" type="number" min="0" [(ngModel)]="carr.creditoMinimo" [formControl]="creFormControl" placeholder="Créditos">
+                <mat-error *ngIf="creFormControl.hasError('required')">
+                  Ingrese Créditos
+                </mat-error>
+                <mat-error *ngIf="creFormControl.hasError('min')">
+                  Ingrese un valor mayor o igual que 0
+                </mat-error>
+              </mat-form-field>    
+        <mat-label style="color: steelblue;font-weight: 600;">Cursos que se dictaran en esa Carrera:</mat-label>
+        <div class="example-container" style="padding-top: 8px;display: block;height: 20vh;overflow-y: auto;">
+            <mat-selection-list [(ngModel)]="valorSelect" multiple name="valorSelect" #shoes>
+                <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe.idcurso">
+                  {{shoe.nombre}}
+                </mat-list-option>
+              </mat-selection-list>
+        </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button  color="primary"(click)="postCarrera()">Confirmar Carrera</button></div>
+        </div>
+
+
+      </form>

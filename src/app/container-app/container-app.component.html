@@ -1,0 +1,354 @@
+<div  class="uploader-status" *ngIf="!loading">
+    <mat-spinner color="warn"></mat-spinner>
+</div>
+
+<div class="dinam"  *ngIf="loading">
+    <div class="contenido" id="ini" >
+        <div class="titulo">
+            <h3  style="font-size: 2vh;">Bienvenidos al nuevo sistema de bedelías totalmente renovado 2020.</h3>
+        </div>
+        <mat-divider style="background: darkorange;margin: 20px;"></mat-divider>
+        <div class="funcionalidad2">
+              
+            <div class="courses-container">
+                <div class="course">
+                    <div class="course-preview">
+                        <h6 style="font-size: 2vh;">UTEC</h6>
+                        <h2 style="font-size: 2vh;">Bedelías 2020</h2>                 
+                    </div>
+                    <div class="course-info">
+
+                        <h6 style="font-size: 2vh;">Inscripciones</h6>
+                        <div style="position: absolute;">
+                          <h2  style="font-size: 2vmin;">Ya se encuentran disponibles los periodos de inscripciones, por lo tanto pueden postularse a nuestras carreras.</h2>
+                        </div>
+
+                        <button class="btn" (click)="irApostularse()" >POSTULARME</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-divider style="background: darkorange;margin: 20px;"></mat-divider>
+        <div class="titulo">
+          <h3 style="text-align: center;font-size: 2vh;">Aquí se encuentran las secciones publicas que podrán ingresar.</h3>
+      </div>
+        <div class="op">
+                <owl-carousel-o [options]="customOptions">
+                  <ng-template carouselSlide>                
+                    <a routerLink="/NuestrasCarreras" routerLinkActive="active">
+                    <div class="card 2" style="background-color: darkorange;">
+                          <div class="card_image">
+  
+                              </div>
+                          <div class="card_title ">
+                              <p style="color: whitesmoke;">Carreras</p>
+                          </div>
+                    </div>
+                  </a>
+                  </ng-template>  
+                  <ng-template carouselSlide>
+                    <a href="">
+                      <div class="card 2" style="background-color: darkorange;">
+                            <div class="card_image">
+    
+                                </div>
+                            <div class="card_title ">
+                                <p style="color: whitesmoke;">Sedes</p>
+                            </div>
+                      </div>
+                    </a>
+                  </ng-template>  
+                  <ng-template carouselSlide>
+                    <a href="">
+                      <div class="card 2" style="background-color: darkorange;">
+                            <div class="card_image">
+    
+                                </div>
+                            <div class="card_title ">
+                                <p style="color: whitesmoke;">Áreas</p>
+                            </div>
+                      </div>
+                    </a>
+                  </ng-template>  
+                  <ng-template carouselSlide>
+                    <a href="">
+                      <div class="card 2" style="background-color: darkorange;">
+                            <div class="card_image">
+    
+                                </div>
+                            <div class="card_title ">
+                                <p style="color: whitesmoke;">Cursos</p>
+                            </div>
+                      </div>
+                    </a>
+                  </ng-template>  
+ 
+                  <ng-template carouselSlide>
+                    <a href="">
+                      <div class="card 2" style="background-color: darkorange;">
+                            <div class="card_image">
+    
+                                </div>
+                            <div class="card_title ">
+                                <p style="color: whitesmoke;">Talleres</p>
+                            </div>
+                      </div>
+                    </a>
+                  </ng-template>  
+                  <ng-template carouselSlide>
+                    <a href="">
+                      <div class="card 2" style="background-color: darkorange;">
+                            <div class="card_image">
+    
+                                </div>
+                            <div class="card_title ">
+                                <p style="color: whitesmoke;">Noticias</p>
+                            </div>
+                      </div>
+                    </a>
+                  </ng-template>  
+ 
+                  <ng-template carouselSlide>
+                    <a href="">
+                      <div class="card 2" style="background-color: darkorange;">
+                            <div class="card_image">
+    
+                                </div>
+                            <div class="card_title ">
+                                <p style="color: whitesmoke;">Pasantías</p>
+                            </div>
+                      </div>
+                    </a>
+                  </ng-template>  
+                </owl-carousel-o>
+        </div>
+        <mat-divider style="background: darkorange;margin: 20px;width: 90%;"></mat-divider>
+    </div>
+
+    <div class="contenido2" id="cont" style="display: flex;align-items: center;justify-content: center;">
+      <mat-card class="example-card" style="margin: 20px;">
+        <mat-card-header>
+          <mat-card-title style="color: darkorange;">Postularse a Carrera</mat-card-title>
+          <mat-card-subtitle>Selecciona la carrera que desees postularse e ingresa los datos requeridos para enviar el pedido de solicitud.</mat-card-subtitle>
+        </mat-card-header>
+       
+        <mat-card-content>
+
+
+              <mat-horizontal-stepper linear #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+
+                  <form [formGroup]="firstFormGroup">
+
+                    <ng-template matStepLabel>Carreras</ng-template>
+
+                      <mat-card class="example-card" style="height: 45vh;margin: 20px;box-shadow: none !important;">
+          
+                          <mat-card-content style="margin: 20px;height: 35vh;">
+                            <mat-selection-list #shoes  [ngModelOptions]="{standalone: true}" [multiple]="false" style="overflow-y: auto;min-width: 250px;height: 10vh;">
+                              <mat-list-option *ngFor="let shoe of dataSource" (click)="select(shoe.idperiododeincripciones)" [value]="shoe" >
+                                {{shoe.carrera.nombre}} 
+                              </mat-list-option>
+                            </mat-selection-list>  
+                          </mat-card-content>
+                          <mat-card-actions style="margin: 20px;height: 15vh;">
+                            <div style="width: 100%;display: flex;align-items: center;justify-content: center;">
+                              <button mat-button matStepperNext style="color: white; background: tomato;">Siguiente</button>
+                            </div>
+                          </mat-card-actions>
+
+                        </mat-card>
+
+                  </form>
+                </mat-step>
+
+                <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+                  <form >
+                    <ng-template matStepLabel>Datos Personales</ng-template>
+                 
+                      <mat-card class="example-card" style="height: 45vh;margin: 20px;box-shadow: none !important;">
+          
+                        <mat-card-content style="margin: 20px;height: 35vh;">
+                          <div >
+                            <table class="example-full-width" cellspacing="0"><tr>
+                                <td><mat-form-field class="example-full-width">
+                                  <mat-label>Nombre</mat-label>
+                                  <input matInput [(ngModel)]="per.nombre" [formControl]="nomFormControl" name="input1">
+                                  <mat-error *ngIf="nomFormControl.hasError('required')">
+                                    Ingrese nombre
+                                  </mat-error>
+                                </mat-form-field></td>
+                                <td><mat-form-field class="example-full-width">
+                                  <mat-label>Apellido</mat-label>
+                                  <input matInput [(ngModel)]="per.apellido" [formControl]="apeFormControl" name="input2">
+                                  <mat-error *ngIf="apeFormControl.hasError('required')">
+                                    Ingrese apellido
+                                  </mat-error>
+                                </mat-form-field></td>
+                              </tr></table> 
+                
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Email</mat-label>
+                                <input matInput [(ngModel)]="per.correo" type="email" name="input3" [formControl]="emeFormControl" placeholder="Ex. pat@example.com">
+                                <mat-error *ngIf="emeFormControl.hasError('required')">
+                                  Ingrese correo
+                                </mat-error>
+                                <mat-error *ngIf="emeFormControl.hasError('email')">
+                                  Ingrese email valido Ex. : ejemplo@hotmail.com
+                                </mat-error>
+                              </mat-form-field>  
+                              <table class="example-full-width" cellspacing="0"><tr>
+                                <td><mat-form-field class="example-full-width">
+                                  <mat-label>Teléfono</mat-label>
+                                  <input matInput [(ngModel)]="per.telefono" type="tel" min="0"  [formControl]="telFormControl" name="input4">
+                                  <mat-error *ngIf="telFormControl.hasError('required')">
+                                    Ingrese telefono
+                                  </mat-error>
+                                </mat-form-field></td>
+                                <td><mat-form-field class="example-full-width">
+                                  <mat-label>Documento CI.</mat-label>
+                                  <input matInput [(ngModel)]="per.ci" type="number" min="0" name="input5" [formControl]="ciFormControl">
+                                  <mat-error *ngIf="ciFormControl.hasError('required')">
+                                    Ingrese CI.
+                                  </mat-error>
+                                </mat-form-field></td>
+                              </tr></table> 
+                                <mat-form-field appearance="fill"  style="width: 100%;">
+                                  <mat-label>Fecha de Nacimiento</mat-label>
+                                  <input matInput [(ngModel)]="date" [ngModelOptions]="{standalone: true}" placeholder="Date" [formControl]="fecha1FormControl" [matDatepicker]="picker1" >
+                                  <mat-error *ngIf="fecha1FormControl.hasError('required')">
+                                    Ingrese fecha de nacimiento
+                                  </mat-error>
+                                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>                    
+                                <mat-form-field >
+                                  <mat-label>Sexo</mat-label>
+                                  <mat-select [(value)]="selected" >
+                                    <mat-option value="option1">Masculino</mat-option>
+                                    <mat-option value="option2">Femenino</mat-option>
+                                  </mat-select></mat-form-field>
+                           
+                   
+
+        
+      
+                        </div>  
+                        </mat-card-content>
+                        <mat-card-actions style="margin: 20px;height: 15vh;">
+                          <div style="width: 100%;display: flex;align-items: center;justify-content: space-around;">
+                            <button mat-button matStepperPrevious style="color: white;
+                            background: steelblue;">Anterior</button>
+                            <button mat-button matStepperNext style="color: white;
+                            background: tomato;">Siguiente</button>
+                          </div>   
+                        </mat-card-actions>
+
+                      </mat-card>
+          
+                    </form>
+                  
+ 
+          
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Requeridos </ng-template>
+                  <mat-card class="example-card" style="height: 45vh;margin: 20px;box-shadow: none !important;">
+          
+                    <mat-card-content style="margin: 20px;height: 35vh;">
+                      <table class="example-full-width" cellspacing="0"><tr>
+                        <td>
+                        <mat-form-field class="example-full-width">
+                          <input [(ngModel)]="dir.departamento"
+                                 type="text"
+                                 placeholder="Departamento"
+                                 aria-label="Number"
+                                 matInput
+                                 [formControl]="myControl"
+                                 [matAutocomplete]="auto" name="input18" [formControl]="depFormControl">
+                                 <mat-error *ngIf="depFormControl.hasError('required')">
+                                  Ingrese departamento
+                                </mat-error>
+                          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                              {{option}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field></td>
+                        <td><mat-form-field class="example-full-width">
+                          <mat-label>Ciudad</mat-label>
+                          <input [(ngModel)]="dir.ciudad" [formControl]="ciuFormControl" matInput name="input8">
+                          <mat-error *ngIf="ciuFormControl.hasError('required')">
+                            Ingrese ciudad
+                          </mat-error>
+                        </mat-form-field></td>
+                      </tr></table> 
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Dirección</mat-label>
+                        <input [(ngModel)]="dir.calle" matInput  [formControl]="dirFormControl" name="input9">
+                        <mat-error *ngIf="dirFormControl.hasError('required')">
+                          Ingrese direccion
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field  class="example-full-width">
+                        <mat-label *ngIf="ci != null;else ci2" >{{ci}}</mat-label>
+                        <ng-template #ci2>
+                            <mat-label>Documento de Identidad</mat-label>
+                        </ng-template>
+                        <input matInput disabled>
+                        <button mat-icon-button matSuffix (click)="fileInput.click()">
+                            <mat-icon>attach_file</mat-icon>
+                        </button>
+                        <input hidden (change)="handleFileInput($event.target.files,$event)" #fileInput type="file" id="file">
+                    </mat-form-field>
+
+ 
+
+                    <mat-form-field  class="example-full-width">
+                      <mat-label *ngIf="cs != null;else cs2">{{cs}}</mat-label>
+                      <ng-template #cs2>
+                          <mat-label>Carne de Salud</mat-label>
+                      </ng-template>
+                      <input matInput disabled>
+                      <button mat-icon-button matSuffix (click)="fileInput2.click()">
+                          <mat-icon>attach_file</mat-icon>
+                      </button>
+                      <input hidden (change)="handleFileInput2($event.target.files,$event)" #fileInput2 type="file" id="file2">
+                  </mat-form-field>
+
+
+                  <mat-form-field  class="example-full-width">
+                    <mat-label *ngIf="escolaridad != null;else esco2">{{escolaridad}}</mat-label>
+                    <ng-template #esco2>
+                        <mat-label>Escolaridad</mat-label>
+                    </ng-template>
+                    <input matInput disabled>
+                    <button mat-icon-button matSuffix (click)="fileInput3.click()">
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                    <input hidden (change)="handleFileInput3($event.target.files,$event)" #fileInput3 type="file" id="file3">
+                </mat-form-field>
+
+                    </mat-card-content>
+                    <mat-card-actions style="margin: 20px;height: 15vh;">
+                      <div style="width: 100%;display: flex;align-items: center;justify-content: space-around;">
+                        <button mat-button matStepperPrevious style="color: white;background: steelblue;">Anterior</button>
+                        <button mat-button matStepperNext style="color: white;background: darkorange;" (click)="enviarSolicitud()">Enviar Solicitud</button>
+                      </div>
+                    </mat-card-actions>
+
+                  </mat-card>
+                  
+        
+
+                </mat-step>
+              </mat-horizontal-stepper>
+            </mat-card-content>
+          </mat-card> 
+         
+            <button class="btn" style="background-color: royalblue;" (click)="irInicio()"  >Área Principal</button>
+    </div>
+</div>
+
+
+

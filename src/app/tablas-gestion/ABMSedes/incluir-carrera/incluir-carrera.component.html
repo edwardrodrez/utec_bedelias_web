@@ -1,0 +1,26 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Agregar Carreras a la Sede</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+      
+        <mat-label style="color: steelblue;font-weight: 600;">Carreras que se dictaran en esa Sede :</mat-label>
+        <div class="example-container" style="padding-top: 8px;display: block;height: 20vh;overflow-y: auto;">
+            <mat-selection-list   [(ngModel)]="valorSelect" multiple name="valorSelect" #shoes>
+                <mat-list-option *ngFor="let shoe of listadas" [value]="shoe">
+                  {{shoe.nombre}}
+                </mat-list-option>
+              </mat-selection-list>
+        </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button mat-raised-button color="primary" (click)="agregarCarreras()">Añadir a la Sede</button></div>
+        </div>
+
+
+      </form>

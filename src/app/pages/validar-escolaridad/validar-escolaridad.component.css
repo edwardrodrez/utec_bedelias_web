@@ -1,0 +1,115 @@
+.container{
+    padding: 20px;
+    height: 95vh;
+    background: #141E30;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.courses-container {
+    padding: 20px;
+}
+
+
+
+.course {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    margin: 20px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.course h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.course h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+.course-preview {
+    background-color: darkorange;
+    color: #fff;
+    padding: 30px;
+    min-width: 300px;
+    min-width: 100px;
+
+}
+
+.course-preview a {
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+.course-info {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.progress-container {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+    width: 150px;
+}
+
+.progress {
+    background-color: #ddd;
+    border-radius: 3px;
+    height: 5px;
+    width: 100%;
+}
+
+.progress::after {
+    border-radius: 3px;
+    background-color:  darkorange;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 66%;
+}
+
+.progress-text {
+    font-size: 10px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  ::ng-deep .notificar-usuario{
+    background-color: white;
+    color: black;
+    margin-top: 12vh !important;
+}
+
+::ng-deep .notificar-error{
+    background-color: black;
+    color: white;
+}

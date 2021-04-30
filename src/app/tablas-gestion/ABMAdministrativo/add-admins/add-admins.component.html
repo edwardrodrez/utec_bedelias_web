@@ -1,0 +1,30 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Alta de Administrativo</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <h3 style="color: steelblue;
+        text-align: center;
+        font-weight: 300;
+        font-size: 2vh;
+        height: 5vh;
+        display: flex;
+        align-items: center;">Seleccione una opción</h3>
+        <div style="    display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        height: 7vh;
+        align-items: center;
+        padding: 0px;">
+
+            <div><button mat-raised-button (click)="usExistente()" color="warn">Existente</button></div>
+            <div style="margin-right: 10px;margin-left: 20px;"><button mat-raised-button (click)="usNuevo()" color="primary">Nuevo Usuario</button></div>
+
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button  color="primary"  mat-dialog-close>Cancelar</button></div>
+        </div>
+      </form>

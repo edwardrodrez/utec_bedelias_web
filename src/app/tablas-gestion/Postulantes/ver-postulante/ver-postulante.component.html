@@ -1,0 +1,92 @@
+<div class="container" style="padding: 20px;background: #00B4DB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+    <div >
+        <h1>Solicitud de Postulante</h1>
+        <mat-divider style="background: black;"></mat-divider>
+    </div>
+    <div style="display: flex;padding: 20px;">
+        <div class="per-data"  style="width: 60vh;height: 60vh;padding: 20px;">
+            <h1 style="text-align: center;
+            color: black;
+            font-size: 2vh;">Datos Personales</h1>
+
+            <mat-list role="list">
+                <mat-list-item role="listitem">Nombre: {{insc.persona.nombre}}</mat-list-item>
+                <mat-list-item role="listitem">Apellido: {{insc.persona.apellido}}</mat-list-item>
+                <mat-list-item role="listitem">Documento de Identidad: {{insc.persona.ci}}</mat-list-item>
+                <mat-list-item role="listitem">Correo: {{insc.persona.correo}}</mat-list-item>
+                <mat-list-item role="listitem">Fecha de Nacimiento: {{insc.persona.fechaDeNacimiento}}</mat-list-item>
+                <mat-list-item role="listitem">Sexo: {{insc.persona.sexo}}</mat-list-item>
+                <mat-list-item role="listitem">Teléfono: {{insc.persona.telefono}}</mat-list-item>
+              </mat-list>
+        </div>
+        <div style="width: 100%;margin-left: 30px;display: flex;
+        flex-direction: column;">
+            <div>
+                <span class="mode" style="display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 28vh;">
+                    <span color="primary"style="padding-top: 10px;display: flex;width: 25vh;justify-content: space-between;">
+                        <img src="../assets/img/perfil.jpg" alt="" style="height: 8vh;width: 8vh;border-radius: 8vh;">
+                        <div style="padding-left: 5vh;">
+                            <h1 style="color: whitesmoke;font-size: 2vh;">{{insc.persona.nombre}} {{insc.persona.apellido}}</h1> 
+                            <p style="color: azure;width: 50vh;">Solicitud de aceptación.</p>           
+                        </div>
+                    </span>   
+                </span>
+
+                <mat-divider style="background: black;margin-left: 10vh;"></mat-divider>
+
+            </div>
+            <div style="margin-top: 30px;">
+                <h1 style="color: whitesmoke;font-size: 2vh;">Escolaridad</h1>
+                <div class="card-doc" style="display: flex;
+                align-items: center;
+                justify-content: space-between;">
+                      <span color="primary"style="padding-top: 10px;display: flex;width: 25vh;justify-content: space-between;">
+                        <div style="padding-left: 5vh;">
+                            <h1 style="color: black;font-size: 2vh;">Formato PDF</h1>        
+                        </div>
+                    </span>  
+                    <button mat-button  matTooltip="Ver documento" (click)="showEscolaridad()"  style="color: rgb(251, 255, 255);border: 2px solid;background: darkcyan;" ><span class="material-icons">remove_red_eye</span></button>
+                </div>
+            </div>
+            <div >
+                <h1 style="color: whitesmoke;font-size: 2vh;">Documento de Identidad</h1>
+                <div class="card-doc" style="display: flex;
+                align-items: center;
+                justify-content: space-between;">
+                      <span color="primary"style="padding-top: 10px;display: flex;width: 25vh;justify-content: space-between;">
+                        <div style="padding-left: 5vh;">
+                            <h1 style="color: black;font-size: 2vh;">Formato PDF</h1>        
+                        </div>
+                    </span>  
+                    <button mat-button  matTooltip="Ver documento" (click)="showCi()" [href]="fileUrl" download="file.txt" style="color: rgb(251, 255, 255);border: 2px solid;background:  darkcyan;" ><span class="material-icons">remove_red_eye</span></button>
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h1 style="color: whitesmoke;font-size: 2vh;">Carne de Salud</h1>
+                <div class="card-doc" style="display: flex;
+                align-items: center;
+                justify-content: space-between;">
+                      <span color="primary"style="padding-top: 10px;display: flex;width: 25vh;justify-content: space-between;">
+                        <div style="padding-left: 5vh;">
+                            <h1 style="color: black;font-size: 2vh;">Formato PDF</h1>        
+                        </div>
+                    </span>  
+                    <button mat-button  matTooltip="Ver documento" (click)="showSalud()" style="color: rgb(251, 255, 255);border: 2px solid;background: darkcyan;" ><span class="material-icons">remove_red_eye</span></button>
+                </div>
+            </div>
+            <div *ngIf="insc.estado != 'aprobada'" style="display: flex;align-items: center;justify-content: space-around;">
+                <button mat-button  matTooltip="Aceptar Pedido de Inscripcion" (click)="aceptarPostulante()"  style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;width: 10vh;background: royalblue;" ><span class="material-icons">done_outline</span></button>
+                <button mat-button  matTooltip="Rechazar Pedido de Inscripcion" (click)="rechazarPostulante()" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;width: 10vh;background: crimson;" ><span class="material-icons">clear</span></button>
+            </div>
+           
+
+        </div>
+
+    </div>
+</div>

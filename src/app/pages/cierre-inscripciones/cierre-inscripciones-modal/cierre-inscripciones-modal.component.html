@@ -1,0 +1,16 @@
+<h3 style="color: steelblue;
+text-align: center;
+font-weight: 600;
+font-size: 2vh;">Cierre Periodo de Inscripcion de la Carrera</h3>
+<mat-divider></mat-divider>
+
+    <form class="example-form">
+        <div style="padding-top: 20px;padding-bottom: 30px;">
+            <p>Dara por cerrada el periodo de inscripcion, esta seguro de esto?</p>
+        </div>
+        <mat-divider></mat-divider>
+        <div style="display: flex;justify-content: space-between;padding: 10px;">
+            <div><button mat-button mat-dialog-close>Cancelar</button></div>
+            <div><button  mat-button color="primary" (click)="cerrarPeriodoInsc()">Confirmar</button></div>
+        </div>   
+      </form>

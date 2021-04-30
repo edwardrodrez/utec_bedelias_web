@@ -1,0 +1,10 @@
+::ng-deep .notificar-usuario{
+    background-color: white;
+    color: black;
+    margin-top: 20vh !important;
+}
+
+::ng-deep .notificar-error{
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,76 @@
+<div class="container" style="padding: 20px;">
+    <div >
+        <h1>Periodos de Inscripciones</h1>
+        <mat-divider style="background: darkorange;"></mat-divider>
+        <div style="padding-top: 20px;padding-bottom:20px;display: flex; align-items:center;justify-content: space-between;">
+            <p style="color: azure;width: 50vh;">Gestión de Períodos de Inscripciones, indica la fecha de inicio y final, así como su ubicación además de los cursos que se dictaran en la misma.</p>
+            <button mat-button matTooltip="Crear Nuevo Periodo"  style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" (click)="addInscripcion()"><span class="material-icons">
+                add
+                </span>Crear</button>
+            
+        </div>
+        <mat-divider style="background: darkorange;"></mat-divider>
+    </div>
+
+    <div class="tablas" style="display: flex;justify-content: space-between;">
+    <div class="carreras" >
+        <h1 style="font-size: 2vh;padding-top: 10px;">Periodos de Inscripciones Registrados:</h1>
+
+
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows
+        class="mat-elevation-z8" style="width: 80vh;">
+            <!-- Position Column -->
+            <ng-container matColumnDef="fechaInicial">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Fecha Inicial</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaInicial}} </td>
+            </ng-container>
+            <ng-container matColumnDef="fechaFinal">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Fecha Final</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.fechaFinal}} </td>
+            </ng-container>
+            <ng-container matColumnDef="carrera">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Carrera</th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> {{element.carrera.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones </th>
+                <td mat-cell *matCellDef="let element"  style="text-align: center;"> 
+                    <button mat-flat-button color="primary" matTooltip="Modificar registro" style="margin: 10px;" (click)="modInscripcion(element)"><span class="material-icons">edit</span></button>
+                    <button mat-flat-button color="warn" matTooltip="Eliminar registro" style="margin: 10px;" (click)="elimInscripcion(element)"><span class="material-icons">delete</span></button>
+                    <button mat-flat-button  (click)="getSolicitudes(element)"style="background-color: teal;color: white;margin: 10px;" matTooltip="Ver solicitudes" ><span class="material-icons">input</span></button>
+                </td>
+            </ng-container> 
+          
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table> 
+    </div>
+
+
+
+  
+    <div class="cursos">      
+        <h1 style="font-size: 2vh;padding-top: 10px;">Solicitud de Postulante : </h1>
+        <div style="background: steelblue;width:40vh;height: 40vh;overflow-y: auto;">
+            <mat-nav-list > 
+                <mat-list-item  *ngFor="let element of solicitudes" style="color: azure;font-weight: 500;">
+                    <div class="item-lis" style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+                       {{element.persona.nombre}} Estado: {{element.estado}}
+                        <button mat-button  matTooltip="Ver Datos del Postulante" routerLink="/SolicitudPostulante" [state]="element"  routerLinkActive="active" style="color: rgb(251, 255, 255);border: 2px solid;border-radius: 30px;" ><span class="material-icons">description</span></button>
+
+                    </div>
+                </mat-list-item>  
+                <mat-list-item  *ngIf="solicitudes == null || solicitudes.length == 0" style="color: azure;font-weight: 500;">
+                    <div class="item-lis" style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+                            Sin Solicitud de Postulantes.
+                    </div>
+                </mat-list-item>
+            </mat-nav-list>   
+        </div>
+    </div>
+
+
+</div>
+
+</div>
